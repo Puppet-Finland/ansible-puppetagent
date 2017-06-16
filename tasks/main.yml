@@ -1,0 +1,22 @@
+---
+- name: get puppetlabs-release package
+  get_url:
+    url: "{{ remote_path }}"
+    dest: "{{ local_path }}"
+- name: install puppetlabs-release package
+  apt:
+    deb: "{{ local_path }}"
+- name: install puppet-agent package
+  apt:
+    name: puppet-agent
+    update_cache: yes
+- name: adapt puppet.conf
+  command: "{{ puppet }} config set --section agent server {{ server }}"
+- name: append puppet executables to PATH for bash
+  lineinfile:
+    state: present
+    line: 'export PATH=$PATH:/opt/puppetlabs/bin'
+    dest: "{{ default_shell_config }}"
+    insertafter: EOF
+- name: run puppet agent in no-operation mode
+  command: "{{ puppet }} agent --onetime --no-daemonize --no-splay --waitforcert 30 --noop"

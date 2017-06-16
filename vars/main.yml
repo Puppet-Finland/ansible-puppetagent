@@ -1,0 +1,8 @@
+base_url: 'https://apt.puppetlabs.com'
+deb: "puppetlabs-release-pc1-{{ ansible_lsb.codename }}.deb"
+remote_path: "{{ base_url }}/{{ deb }}"
+local_path: "/tmp/{{ deb }}"
+puppet: '/opt/puppetlabs/bin/puppet'
+
+# This will only work on Debian. RedHat will require modifications.
+default_shell_config: '/etc/bash.bashrc'
