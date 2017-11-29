@@ -1,0 +1,5 @@
+---
+- name: adapt puppet.conf
+  command: "{{ puppet }} config set --section agent server {{ puppetagent_server }}"
+- name: run puppet agent in no-operation mode
+  command: "{{ puppet }} agent --onetime --no-daemonize --no-splay --waitforcert 30 --noop"
