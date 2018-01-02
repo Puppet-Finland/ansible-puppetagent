@@ -7,3 +7,4 @@
 - name: run puppet agent in no-operation mode
   command: "{{ puppet }} agent --onetime --no-daemonize --no-splay --noop"
   when: puppetagent_waitforcert == false
+  ignore_errors: yes
