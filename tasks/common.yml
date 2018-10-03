@@ -2,7 +2,11 @@
   get_url:
     url: "{{ remote_path }}"
     dest: "{{ local_path }}"
-- name: install puppetlabs-release package
+- name: remove puppet4 release package
+  apt:
+    name: puppetlabs-release-pc1
+    state: absent
+- name: install puppet5-release package
   apt:
     deb: "{{ local_path }}"
 - name: install puppet-agent package

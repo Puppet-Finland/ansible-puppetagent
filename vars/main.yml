@@ -1,5 +1,5 @@
 base_url: 'https://apt.puppetlabs.com'
-deb: "puppetlabs-release-pc1-{{ ansible_lsb.codename }}.deb"
+deb: "puppet5-release-{{ ansible_lsb.codename }}.deb"
 remote_path: "{{ base_url }}/{{ deb }}"
 local_path: "/tmp/{{ deb }}"
 puppet: '/opt/puppetlabs/bin/puppet'
