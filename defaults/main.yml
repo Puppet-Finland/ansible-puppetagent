@@ -1,3 +1,4 @@
 puppetagent_manage_agent: false
 puppetagent_server: 'puppet'
+puppetagent_server_ip: false
 puppetagent_waitforcert: true

@@ -15,3 +15,10 @@
     line: 'export PATH=$PATH:/opt/puppetlabs/bin'
     dest: "{{ default_shell_config }}"
     insertafter: EOF
+- name: append puppetserver ip to hosts file
+  lineinfile:
+    state: present
+    line: "{{ puppetagent_server_ip }} {{ puppetagent_server }}"
+    dest: '/etc/hosts'
+    insertafter: EOF
+  when: not puppetagent_server_ip == false
